@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List with Update and Delete</title>
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* body {
+      font-family: Arial, sans-serif;
+    }
+    .task {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .task input[type="text"] {
+      flex: 1;
+      margin-right: 10px;
+      width: calc(100% - 0px);
+    background-color: white;
+    border: 2px solid rgb(2, 2, 2);
+    font-size: 18px;
+    /* text-align: right; */
+    /* padding: 5px;
+    border-radius: 2px;
+    color: rgb(10, 9, 9);
+    }
+    .task button { */
+      /* margin-right: 5px;
+    }
+    .list_body{
+    width: 730px;
+    margin: 0 auto;
+    background-color: #e4dddd;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    margin-top: 200px;
+
+}
+.list_body h1{
+    text-align: center;
+}
+
+.result{
+  
+    /* outline: none;  */
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: rgb(158, 108, 16);
+      margin: 0;
+    }
+
+    .container {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      height: 300px;
+    }
+
+    h1{
+      margin-top: 0;
+      text-align: center;
+      color: #caa52b;
+    }
+
+    #taskInput {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    #taskInput input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    .btn-primary {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffd900;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+    }
+
+    .task span {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .task button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn-warning {
+      color: #f0ad4e;
+    }
+
+    .btn-danger {
+      color: #d9534f;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>To-Do List</h1><br>
+
+<div id="taskInput">
+  <input type="text" id="taskText" placeholder="Enter a task..">
+  <button onclick="addTask()" class="btn btn-primary">Add</button>
+</div>
+
+<div id="taskList"></div>
+</div>
+
+<script>
+  function addTask() {
+    var taskText = document.getElementById('taskText').value;
+    var taskList = document.getElementById('taskList');
+
+    if (taskText.trim() !== '') {
+      var newTask = document.createElement('div');
+      newTask.className = 'task';
+
+      var textElement = document.createElement('span');
+      textElement.textContent = taskText;
+      newTask.appendChild(textElement);
+
+      var updateButton = document.createElement('button');
+      updateButton.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+      updateButton.className = 'btn btn-warning';
+      updateButton.onclick = function() {
+        var updatedTask = prompt('Enter the updated task:', textElement.textContent);
+        if (updatedTask !== null && updatedTask.trim() !== '') {
+          textElement.textContent = updatedTask;
+        }
+      };
+      newTask.appendChild(updateButton);
+
+      var deleteButton = document.createElement('button');
+      deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      deleteButton.className = 'btn btn-danger';
+      deleteButton.onclick = function() {
+        taskList.removeChild(newTask);
+      };
+      newTask.appendChild(deleteButton);
+
+      taskList.appendChild(newTask);
+
+      document.getElementById('taskText').value = ''; // Clear input field after adding task
+    } else {
+      alert('Please enter a task!');
+    }
+  }
+</script>
+
+
+</body>
+</html>
